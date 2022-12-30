@@ -14,12 +14,14 @@ rental_data = data_details["rentals"]
 option_data = data_details["options"]
 
 
-# looping through to find the price of each car_id
+''' looping through to find the price of each car_id
+    We retrieve the dictionary in cars which has the same id as the car_id from rentals
+    here we also initialising the variables to be able to access Rental_functions class
+    we use this class to call functions and append the answers array
+'''
 for i in range(len(rental_data)):
-    #retrieving the dictionary in cars which has the same id as the car_id from rentals
     dictionary = list(filter(lambda car_data: car_data['id'] == rental_data[i]["car_id"], car_data))[0]
     rentals = Rental_functions(dictionary,rental_data[i],option_data)
-    #appending the answers array for the result of this loop
     answer.append({"id": rentals.id, "options": rentals.options(), "actions": rentals.new_action})
 
 
